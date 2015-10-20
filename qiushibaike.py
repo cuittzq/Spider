@@ -4,12 +4,11 @@ import urllib
 import urllib2
 import re
 import tool
-
 import os
 
 
 # 糗事百科 http://www.qiushibaike.com/textnew/page/35
-class Spider:
+class Qiushibaike:
     # 页面初始化
     def __init__(self):
         self.siteURL = 'http://www.qiushibaike.com/textnew/page/'
@@ -53,5 +52,5 @@ class Spider:
 
 
 # 传入起止页码即可，在此传入了2,10,表示抓取第2到10页的MM
-spider = Spider()
-spider.savePagesInfos(1, 35)
+qiushibaike = Qiushibaike()
+qiushibaike.savePagesInfos(1, 35)
