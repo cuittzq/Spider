@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7abf9500-f57d-42ab-8761-a934ccc1f70a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Meinvboqingguan.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/qiushibaike.py" afterPath="$PROJECT_DIR$/qiushibaike.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="test.iws" />
@@ -61,8 +59,8 @@
       <file leaf-file-name="Meinvboqingguan.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Meinvboqingguan.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.840604">
-              <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.4261745">
+              <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
               <folding>
                 <element signature="e#44#57#0" expanded="true" />
               </folding>
@@ -459,7 +457,13 @@
       <option name="project" value="LOCAL" />
       <updated>1445304429951</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="美女薄情馆登陆">
+      <created>1445324293538</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1445324293538</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -501,7 +505,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="项目结构修改" />
-    <option name="LAST_COMMIT_MESSAGE" value="项目结构修改" />
+    <MESSAGE value="美女薄情馆登陆" />
+    <option name="LAST_COMMIT_MESSAGE" value="美女薄情馆登陆" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -717,8 +722,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Meinvboqingguan.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.840604">
-          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.4261745">
+          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
           <folding>
             <element signature="e#44#57#0" expanded="true" />
           </folding>
