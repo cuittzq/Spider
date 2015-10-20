@@ -4,6 +4,7 @@ import urllib
 import urllib2
 import re
 import tool
+
 import os
 
 
@@ -41,10 +42,7 @@ class Spider:
     def getBrief(self, page):
         pattern = re.compile('<div class="mm-aixiu-content".*?>(.*?)<!--', re.S)
         result = re.search(pattern, page)
-        if result != None:
-            return self.tool.replace(result.group(1))
-        else:
-            return None
+        return self.tool.replace(result.group(1))
 
     # 获取页面所有图片
     def getAllImg(self, page):
@@ -53,10 +51,8 @@ class Spider:
         content = re.search(pattern, page)
         # 从代码中提取图片
         patternImg = re.compile('<img.*?src="(.*?)"', re.S)
-        if content != None:
-            return re.findall(patternImg, content.group(1))
-        else:
-            return None
+        images = re.findall(patternImg, content.group(1))
+        return images
 
     # 保存多张写真图片
     def saveImgs(self, images, name):
@@ -121,7 +117,7 @@ class Spider:
         for item in contents:
             # item[0]个人详情URL,item[1]头像URL,item[2]姓名,item[3]年龄,item[4]居住地
             print u"发现一位模特,名字叫", item[2], u"芳龄", item[3], u",她在", item[4]
-            print u"正在偷偷地保存", item[2], u"的信息"
+            print u"正在偷偷地保存", item[2], "的信息"
             print u"又意外地发现她的个人地址是", item[0]
             # 个人详情页面的URL
             detailURL = item[0]
@@ -129,19 +125,17 @@ class Spider:
             detailPage = self.getDetailPage(detailURL)
             # 获取个人简介
             brief = self.getBrief(detailPage)
-
             images = self.getAllImg(detailPage)
             # 保存个人简介
             self.mkdir(item[2])
-            if brief != None:
-                self.saveBrief(brief, item[2])
+            self.saveBrief(brief, item[2])
             # 保存头像
             self.saveIcon(item[1], item[2])
             # 保存图片
-            if images != None:
-                self.saveImgs(images, item[2])
+            self.saveImgs(images, item[2])
 
-    # 传入起止页码，获取MM图片
+
+# 传入起止页码，获取MM图片
     def savePagesInfos(self, start, end):
         for i in range(start, end + 1):
             print u"正在偷偷寻找第", i, u"个地方，看看MM们在不在"
