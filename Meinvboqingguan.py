@@ -16,12 +16,13 @@ class Meinvboqing:
 
     def getAjaxLogin(self):
         # loginurl = self.siteURL + 'Ajax/Login'
-        data = {'name': 'tzq139',
-                'pass': 'Tan520521'}
+        data = {'name': 'tzq123',
+                'pass': '123456'}
         # headers = {
         #     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36'}
         #
         postdata = urllib.urlencode(data).encode(encoding='UTF8')
+
         # req = urllib2.Request(url=loginurl,
         #                       data=data)
         # myResponse = urllib2.urlopen(req).read().decode('utf-8')
