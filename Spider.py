@@ -4,7 +4,6 @@ import urllib
 import urllib2
 import re
 import tool
-
 import os
 
 
