@@ -47,7 +47,8 @@ class Qiushibaike:
             # item[0]昵称,item[1]糗事,item[2]点赞数
             print u"发现一位糗友,名字叫", item[0], u"他讲了一个笑话", item[1], u",收到了", item[2], u"个赞"
             dbheper = DBHelper()
-            dbheper.InsertData(item[0].encode('utf-8').replace('\n',''), item[1].encode('utf-8').replace('\n',''), item[2].encode('utf-8'))
+            dbheper.InsertData(item[0].encode('utf-8').replace('\n', ''), item[1].encode('utf-8').replace('\n', ''),
+                               item[2].encode('utf-8'))
 
     def savePagesInfos(self, start, end):
         for i in range(start, end + 1):
