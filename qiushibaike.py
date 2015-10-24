@@ -7,7 +7,8 @@ import tool
 import dbheper
 from dbheper import *
 import os
-
+import time;
+import threading;
 
 # 糗事百科 http://www.qiushibaike.com/textnew/page/35
 class Qiushibaike:
@@ -45,15 +46,17 @@ class Qiushibaike:
         contents = self.getContents(pageIndex)
         for item in contents:
             # item[0]昵称,item[1]糗事,item[2]点赞数
-            print u"发现一位糗友,名字叫", item[0], u"他讲了一个笑话", item[1], u",收到了", item[2], u"个赞"
+
+            # print u"发现一位糗友,名字叫", item[0], u"他讲了一个笑话", item[1], u",收到了", item[2], u"个赞"
             dbheper = DBHelper()
             dbheper.InsertData(item[0].encode('utf-8').replace('\n', ''), item[1].encode('utf-8').replace('\n', ''),
                                item[2].encode('utf-8'))
 
     def savePagesInfos(self, start, end):
         for i in range(start, end + 1):
-            print u"正在收集糗事。。"
+            #print u"正在收集第", i, u"页的糗事"
             self.savePageInfo(i)
+            time.sleep(1)
 
 
 # 传入起止页码即可，在此传入了2,10,表示抓取第2到10页的MM
