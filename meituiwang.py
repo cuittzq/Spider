@@ -33,7 +33,7 @@ class Meituiwang:
         page = self.getHtml(pageIndex)
         # 套图url http://www.4493.com/siwameitui/31362/1.htm
         # 封面：http://img.1985t.com/uploads/previews/2015/03/0-dnVJdg.jpg
-        # 主题：丝袜美腿性感美女傲人双峰
+        # 主题：''''''''
         # 时间：2015-03-17
         pattern = re.compile(
             '<li><a href="(.*?)" target="_blank"><img src="(.*?)" alt=".*?"/><span>(.*?)</span></a><b class="b1">(.*?)</b><b class="b2">(.*?)</b></li>',

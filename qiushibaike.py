@@ -54,7 +54,7 @@ class Qiushibaike:
 
     def savePagesInfos(self, start, end):
         for i in range(start, end + 1):
-            #print u"正在收集第", i, u"页的糗事"
+            print u"正在收集第", i, u"页的糗事"
             self.savePageInfo(i)
             time.sleep(1)
 
