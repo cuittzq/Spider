@@ -1,14 +1,12 @@
 # coding=utf-8
 __author__ = 'tzq'
-import urllib
 import urllib2
 import re
 import tool
-import dbheper
 from dbheper import *
-import os
-import time;
+import time
 import threading;
+
 
 # 糗事百科 http://www.qiushibaike.com/textnew/page/35
 class Qiushibaike:

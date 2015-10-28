@@ -1,15 +1,13 @@
-# coding=utf-8
+# -*- coding: UTF-8 -*-
 __author__ = 'tzq'
+import os
+import time
 import urllib
 import urllib2
 import re
 import tool
-import dbheper
+import chardet
 from dbheper import *
-import os
-import time;
-import threading;
-import sys
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -20,21 +18,57 @@ class Meituiwang:
         self.siteURL = 'http://www.4493.com/siwameitui/index-%d.htm'
         self.tool = tool.Tool()
 
+    # 保存个人简介
+    @staticmethod
+    def savemyfiles(content):
+        name = 'D:\\test.html'
+        f = open(name, "w+")
+        print u"正在保存文件", name
+        f.write(content.encode('utf-8'))
+
     # 解析页面
     def getHtml(self, pageurl):
         headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.6) Gecko/20091201 Firefox/3.5.6'}
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+            'Accept-Encoding': 'gzip, deflate, sdch',
+            'Accept-Language': 'zh-CN,zh;q=0.8',
+            'Cache-Control': 'max-age=0',
+            'Connection': 'keep-alive',
+            'Cookie': 'bdshare_firstime=1445925865616; BDTUJIAID=8207cdf6d6d25b3fde015106e587ceef; CNZZDATA30040472=cnzz_eid%3D1486937477-1445920985-%26ntime%3D1446012818',
+            'Host': 'www.4493.com',
+            'Upgrade-Insecure-Requests': 1,
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.125 Safari/537.36',
+            'Referer': 'www.4493.com'
+        }
         req = urllib2.Request(
             url=pageurl,
             headers=headers
         )
-        myResponse = urllib2.urlopen(req).read().decode('gb18030')
-        unicode(myResponse, errors='ignore')
-        return myResponse
+
+        ##这里可以换成http://www.baidu.com,http://www.sohu.com
+        reqtest = urllib2.Request("http://www.baidu.com")
+        content = urllib2.urlopen(reqtest).read()
+        typeEncode = sys.getfilesystemencoding()  ##系统默认编码
+        infoencode = chardet.detect(content).get('encoding', 'utf-8')  ##通过第3方模块来自动提取网页的编码
+        html = content.decode(infoencode, 'ignore').encode(typeEncode)  ##先转换成unicode编码，然后转换系统编码输出
+        print html
+
+        r = urllib2.urlopen(req)
+        # 返回网页内容
+        html = r.read()
+        # 返回的报头信息
+        receive_header = r.info()
+        # sys.getfilesystemencoding()
+        # 转码:避免输出出现乱码
+        html = html.decode('gbk', 'ignore').encode('utf-8')
+        # unicode(html, "gb18030").encode("utf8")
+        self.savemyfiles(html)
+        print html
+        return html
 
     # 获取索引界面所有MM的信息，list格式
     def getContents(self, pageIndex):
-        url = self.siteURL % (pageIndex)
+        url = self.siteURL % (int(pageIndex))
         page = self.getHtml(url)
         # 套图url http://www.4493.com/siwameitui/31362/1.htm
         # 封面：http://img.1985t.com/uploads/previews/2015/03/0-dnVJdg.jpg
@@ -82,6 +116,7 @@ class Meituiwang:
 
             # 分析套图数量
             allnum = self.getAllnum(detailhtml)
+
             # 基础图片
             baseurl = detailURL[-5:]
             self.mkdir(item[2])
