@@ -15,7 +15,7 @@ sys.setdefaultencoding('utf-8')
 
 class Meituiwang:
     def __init__(self):
-        self.siteURL = 'http://www.4493.com/siwameitui/index-%d.htm'
+        self.siteURL = 'http://www.mm131.com/'
         self.tool = tool.Tool()
 
     # 保存个人简介
@@ -34,19 +34,17 @@ class Meituiwang:
             'Accept-Language': 'zh-CN,zh;q=0.8',
             'Cache-Control': 'max-age=0',
             'Connection': 'keep-alive',
-            'Cookie': 'bdshare_firstime=1445925865616; BDTUJIAID=8207cdf6d6d25b3fde015106e587ceef; CNZZDATA30040472=cnzz_eid%3D1486937477-1445920985-%26ntime%3D1446012818',
             'Host': 'www.4493.com',
             'Upgrade-Insecure-Requests': 1,
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.125 Safari/537.36',
-            'Referer': 'www.4493.com'
         }
         req = urllib2.Request(
-            url=pageurl,
+            url='http://www.xmeise.com/neiyi/siwa/',
             headers=headers
         )
 
-        ##这里可以换成http://www.baidu.com,http://www.sohu.com
-        reqtest = urllib2.Request("http://www.baidu.com")
+
+        reqtest = urllib2.Request('http://www.xmeise.com/neiyi/siwa/')
         content = urllib2.urlopen(reqtest).read()
         typeEncode = sys.getfilesystemencoding()  ##系统默认编码
         infoencode = chardet.detect(content).get('encoding', 'utf-8')  ##通过第3方模块来自动提取网页的编码
@@ -75,7 +73,7 @@ class Meituiwang:
         # 主题：''''''''
         # 时间：2015-03-17
         pattern = re.compile(
-            '<li><a href="(.*?)" target="_blank"><img src="(.*?)" alt=".*?"/><span>(.*?)</span></a><b class="b1">(.*?)</b><b class="b2">(.*?)</b></li>',
+            '<li class="left-list_li"><a target="_blank" href="(.*?)">.*?</a></li>',
             re.S)
         items = re.findall(pattern, page)
         contents = []
