@@ -61,7 +61,7 @@ class Meituiwang:
             # 套图名称： item.tesx
             # 套图URL item.xpath("@href")[0]
             # append 只能添加一个对象
-            if (item.xpath("img/@alt").len > 0 and item.xpath("@href").len > 0):
+            if (len(item.xpath("img/@alt")) > 0 and len(item.xpath("@href")) > 0):
                 dict = {'Name': item.xpath("img/@alt")[0], 'Url': item.xpath("@href")[0]}
                 contents.append(dict)
 
