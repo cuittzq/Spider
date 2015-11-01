@@ -107,7 +107,7 @@ class Meituiwang:
                 # 得到套图界面代码
                 detailhtml = self.getHtml(url)
                 allnum = 0;
-                ishaved = True;
+                ishaved = False;
                 if detailhtml != None:
                     # 分析套图数量
                     allnum = self.getAllnum(detailhtml)
@@ -170,5 +170,7 @@ class Meituiwang:
 
 # 传入起止页码即可，在此传入了2,10,表示抓取第2到10页的MM
 meituiwang = Meituiwang()
-
-meituiwang.getPageImages()
+try:
+    meituiwang.getPageImages()
+except:
+    print "Unexpected error:", sys.exc_info()[0]
