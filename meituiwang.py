@@ -6,8 +6,8 @@ import urllib
 import urllib2
 import re
 import tool
+import sys
 import chardet
-from dbheper import *
 from lxml import etree
 
 reload(sys)
@@ -115,7 +115,7 @@ class Meituiwang:
                     name = "D:/性感美女/" + name
                     ishaved = self.mkdir(name)
                 # 如果有這个文件夹说明上次已经抓取了就不再抓了
-                if(ishaved):
+                if (ishaved):
                     for i in range(1, allnum):
                         url = baseurl + ".html"
                         if (i > 1):
