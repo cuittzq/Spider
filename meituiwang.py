@@ -4,11 +4,9 @@ import os
 import time
 import urllib
 import urllib2
-import re
 import tool
 import sys
 import chardet
-from lxml import etree
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -45,7 +43,7 @@ class Meituiwang:
             html = myResponse.decode(infoencode, 'ignore').encode(typeEncode)  ##先转换成unicode编码，然后转换系统编码输出
             return html
         except:
-            print "Unexpected error:", sys.exc_info()[0]
+            print "Unexpected error:", sys.exc_info()[2]
             return None
 
     # 获取索引界面所有MM的信息，list格式
@@ -80,7 +78,13 @@ class Meituiwang:
         nodes = dom.xpath("//div[@class='content']/div[@class='content-page']/span[@class='page-ch']")
         text = nodes[0].text
         number = text[1:len(text) - 1]
-        return int(number)
+        num = 0
+        try:
+            num = int(number)
+        except:
+            print(number)
+            num = 0
+        return num
 
     def getImage(self, pagehtml):
         import lxml.html.soupparser as soupparser
@@ -106,8 +110,8 @@ class Meituiwang:
                 # 套图地址URL
                 # 得到套图界面代码
                 detailhtml = self.getHtml(url)
-                allnum = 0;
-                ishaved = False;
+                allnum = 0
+                ishaved = False
                 if detailhtml != None:
                     # 分析套图数量
                     allnum = self.getAllnum(detailhtml)
@@ -130,8 +134,8 @@ class Meituiwang:
                                     # 保存图片
                                     self.saveImg(imagesurl, filename)
                         except:
-                            print "Unexpected error:", sys.exc_info()[0]
-                        time.sleep(5)
+                            print "Unexpected error:", sys.exc_info()[2]
+                            # time.sleep(5)
 
     # 传入图片地址，文件名，保存单张图片
     def saveImg(self, imageURL, fileName):
@@ -170,7 +174,4 @@ class Meituiwang:
 
 # 传入起止页码即可，在此传入了2,10,表示抓取第2到10页的MM
 meituiwang = Meituiwang()
-try:
-    meituiwang.getPageImages()
-except:
-    print "Unexpected error:", sys.exc_info()[0]
+meituiwang.getPageImages()
