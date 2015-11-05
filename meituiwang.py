@@ -7,6 +7,7 @@ import urllib2
 import tool
 import sys
 import chardet
+import threading
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -40,7 +41,7 @@ class Meituiwang:
 
             infoencode = chardet.detect(myResponse).get('encoding', 'gb2312')  ##通过第3方模块来自动提取网页的编码
 
-            html = myResponse.decode(infoencode, 'ignore').encode(typeEncode)  ##先转换成unicode编码，然后转换系统编码输出
+            html = myResponse.decode(infoencode, 'ignore').encode('utf-8')  ##先转换成unicode编码，然后转换系统编码输出
             return html
         except:
             print "Unexpected error:", sys.exc_info()[2]
@@ -65,7 +66,6 @@ class Meituiwang:
                 if (len(item.xpath("img/@alt")) > 0 and len(item.xpath("@href")) > 0):
                     dict = {'Name': item.xpath("img/@alt")[0], 'Url': item.xpath("@href")[0]}
                     contents.append(dict)
-
             return contents
         else:
             return None
@@ -99,7 +99,7 @@ class Meituiwang:
     def getPageImages(self):
         contents = []
         # 获取索引界面 套图地址
-        for i in range(2, 59):
+        for i in range(40, 59):
             print u"正在收集第", i, u"页的MM"
             contents = self.getContents(i)
             # 循环套图地址
@@ -120,31 +120,46 @@ class Meituiwang:
                     ishaved = self.mkdir(name)
                 # 如果有這个文件夹说明上次已经抓取了就不再抓了
                 if (ishaved):
+                    threads = []
                     for i in range(1, allnum):
                         url = baseurl + ".html"
                         if (i > 1):
                             url = baseurl + '_' + str(i) + ".html"
-                        try:
-                            pagehtml = self.getHtml(url)
-                            if pagehtml != None:
-                                # 循环抓取套图图片
-                                imagesurl = self.getImage(pagehtml)
-                                if (imagesurl != None):
-                                    filename = name + "/beautiful" + str(i) + imagesurl[-4:]
-                                    # 保存图片
-                                    self.saveImg(imagesurl, filename)
-                        except:
-                            print "Unexpected error:", sys.exc_info()[2]
-                            # time.sleep(5)
+                        t1 = threading.Thread(target=self.downloadImage, args=(url, name, i), name=name)
+                        threads.append(t1)
+                    for t in threads:
+                        t.setDaemon(True)
+                        t.start()
+
+        print u"第", i, u"页的MM美照收集完毕"
+
+    def downloadImage(self, url, name, index):
+        try:
+            pagehtml = self.getHtml(url)
+            if pagehtml != None:
+                # 循环抓取套图图片
+                imagesurl = self.getImage(pagehtml)
+                if (imagesurl != None):
+                    filename = name + "/beautiful" + str(index) + imagesurl[-4:]
+                    # 保存图片
+                    self.saveImg(imagesurl, filename)
+        except:
+            print "Unexpected error:", sys.exc_info()[2]
 
     # 传入图片地址，文件名，保存单张图片
     def saveImg(self, imageURL, fileName):
-        u = urllib.urlopen(imageURL)
-        data = u.read()
-        f = open(fileName, 'wb')
-        f.write(data)
-        print u"正在悄悄保存她的一张图片为", fileName
-        f.close()
+        f = []
+        try:
+            u = urllib.urlopen(imageURL)
+            data = u.read()
+            f = open(fileName, 'wb')
+            f.write(data)
+            print fileName
+            f.close()
+        except:
+            print "Unexpected error:", sys.exc_info()[2]
+        finally:
+            f.close()
 
     # 创建新目录
     def mkdir(self, path):
