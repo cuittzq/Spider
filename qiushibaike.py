@@ -1,11 +1,16 @@
 # coding=utf-8
 __author__ = 'tzq'
-import urllib2
-import re
-import tool
 from dbheper import *
 import time
-import threading;
+import urllib2
+import tool
+import chardet
+import re
+
+import sys
+
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 
 # 糗事百科 http://www.qiushibaike.com/textnew/page/35
@@ -15,24 +20,31 @@ class Qiushibaike:
         self.siteURL = 'http://www.qiushibaike.com/textnew/page/'
         self.tool = tool.Tool()
 
-    def getHtml(self, pageIndex):
-        url = self.siteURL + str(pageIndex)
+    # 解析页面
+    def getHtml(self, pageurl):
         headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.6) Gecko/20091201 Firefox/3.5.6'}
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.125 Safari/537.36',
+        }
         req = urllib2.Request(
-            url=url,
+            url=pageurl,
             headers=headers
         )
-        myResponse = urllib2.urlopen(req).read().decode('utf-8')
-        return myResponse
+        try:
+            myResponse = urllib2.urlopen(req).read()
+            html = myResponse.decode('utf-8', 'ig').encode('utf-8')  ##先转换成unicode编码，然后转换系统编码输出
+            return html
+        except:
+            print "Unexpected error:", sys.exc_info()[2]
+            return None
 
     # 获取索引界面所有MM的信息，list格式
     def getContents(self, pageIndex):
-        page = self.getHtml(pageIndex)
+        url = self.siteURL + str(pageIndex)
+        pagehtml = self.getHtml(url)
         pattern = re.compile(
-            '<div class="article block untagged mb15" .*? class="author">.*?<img src=".*?"./>(.*?)</a>.*?class="content">(.*?)<!--.*?-->.*?</div>.*?<div class="stats">.*?class="number">(\d*)',
+            '<div class="article block untagged mb15" .*?class="author clearfix".*?<h2>(.*?)</h2>.*?<div class="content">(.*?)</div>.*?class="number">(\d*)</i> 好笑</span>',
             re.S)
-        items = re.findall(pattern, page)
+        items = re.findall(pattern, pagehtml)
         contents = []
         for item in items:
             contents.append([item[0], item[1], item[2]])
@@ -45,7 +57,7 @@ class Qiushibaike:
         for item in contents:
             # item[0]昵称,item[1]糗事,item[2]点赞数
 
-            # print u"发现一位糗友,名字叫", item[0], u"他讲了一个笑话", item[1], u",收到了", item[2], u"个赞"
+            print u"发现一位糗友,名字叫", item[0], u"他讲了一个笑话", item[1], u",收到了", item[2], u"个赞"
             dbheper = DBHelper()
             dbheper.InsertData(item[0].encode('utf-8').replace('\n', ''), item[1].encode('utf-8').replace('\n', ''),
                                item[2].encode('utf-8'))

@@ -99,37 +99,38 @@ class Meituiwang:
     def getPageImages(self):
         contents = []
         # 获取索引界面 套图地址
-        for i in range(40, 59):
+        for i in range(1, 59):
             print u"正在收集第", i, u"页的MM"
             contents = self.getContents(i)
-            # 循环套图地址
-            for item in contents:
-                name = item['Name']
-                url = item['Url']
-                print u"发现套图", name, u"套图地址是", url,
-                # 套图地址URL
-                # 得到套图界面代码
-                detailhtml = self.getHtml(url)
-                allnum = 0
-                ishaved = False
-                if detailhtml != None:
-                    # 分析套图数量
-                    allnum = self.getAllnum(detailhtml)
-                    baseurl = url[0:len(url) - 5]
-                    name = "D:/性感美女/" + name
-                    ishaved = self.mkdir(name)
-                # 如果有這个文件夹说明上次已经抓取了就不再抓了
-                if (ishaved):
-                    threads = []
-                    for i in range(1, allnum):
-                        url = baseurl + ".html"
-                        if (i > 1):
-                            url = baseurl + '_' + str(i) + ".html"
-                        t1 = threading.Thread(target=self.downloadImage, args=(url, name, i), name=name)
-                        threads.append(t1)
-                    for t in threads:
-                        t.setDaemon(True)
-                        t.start()
+            if contents!=None:
+                # 循环套图地址
+                for item in contents:
+                    name = item['Name']
+                    url = item['Url']
+                    print u"发现套图", name, u"套图地址是", url,
+                    # 套图地址URL
+                    # 得到套图界面代码
+                    detailhtml = self.getHtml(url)
+                    allnum = 0
+                    ishaved = False
+                    if detailhtml != None:
+                        # 分析套图数量
+                        allnum = self.getAllnum(detailhtml)
+                        baseurl = url[0:len(url) - 5]
+                        name = "D:/性感美女/" + name
+                        ishaved = self.mkdir(name)
+                    # 如果有這个文件夹说明上次已经抓取了就不再抓了
+                    if (ishaved):
+                        threads = []
+                        for i in range(1, allnum):
+                            url = baseurl + ".html"
+                            if (i > 1):
+                                url = baseurl + '_' + str(i) + ".html"
+                            t1 = threading.Thread(target=self.downloadImage, args=(url, name, i), name=name)
+                            threads.append(t1)
+                        for t in threads:
+                            t.setDaemon(True)
+                            t.start()
 
         print u"第", i, u"页的MM美照收集完毕"
 
