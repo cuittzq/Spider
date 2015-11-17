@@ -4,7 +4,6 @@ from dbheper import *
 import time
 import urllib2
 import tool
-import chardet
 import re
 
 import sys
