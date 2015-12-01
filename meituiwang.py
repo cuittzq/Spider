@@ -9,6 +9,7 @@ import sys
 import chardet
 import threading
 from WebHelper import HttpHelper
+
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
@@ -29,7 +30,12 @@ class Meituiwang:
 
     # 获取索引界面所有MM的信息，list格式
     def getContents(self, pageindex):
+
         url = self.siteURL % str(pageindex)
+
+        if(pageindex ==1):
+            url = 'http://www.mm131.com/xinggan/'
+
         contenthtml = self.HttpHelper.getHtml(url)
         if contenthtml != None:
             contents = []
@@ -99,8 +105,6 @@ class Meituiwang:
                         baseurl = url[0:len(url) - 5]
                         name = "D:/性感美女/" + name
                         ishaved = self.mkdir(name)
-                    # 如果有這个文件夹说明上次已经抓取了就不再抓了
-                    if (ishaved):
                         threads = []
                         for i in range(1, allnum):
                             url = baseurl + ".html"
@@ -112,7 +116,7 @@ class Meituiwang:
                         for t in threads:
                             t.start()
                         t.join()
-                        print u'套图抓取完毕'
+                    print u'套图抓取完毕'
         print u"第", i, u"页的MM美照收集完毕"
 
     def downloadImage(self, url, name, index):
@@ -123,8 +127,9 @@ class Meituiwang:
                 imagesurl = self.getImage(pagehtml)
                 if (imagesurl != None):
                     filename = name + "/beautiful" + str(index) + imagesurl[-4:]
-                    # 保存图片
-                    self.saveImg(imagesurl, filename)
+                    if not os.path.exists(filename):
+                        # 保存图片
+                        self.saveImg(imagesurl, filename)
         except:
             print "保存图片失败:", sys.exc_info()[2]
 
