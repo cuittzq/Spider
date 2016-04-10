@@ -9,17 +9,17 @@ class DBHelper:
     sys.setdefaultencoding('utf-8')
 
     def __init__(self):
-        self.dbname = 'SpiderDB'
-        self.host = '192.168.31.150'
-        self.user = 'root'
-        self.passwd = '123456'
-        self.port = 3306
-
         # self.dbname = 'SpiderDB'
-        # self.host = '55936bea3d360.gz.cdb.myqcloud.com'
+        # self.host = '192.168.31.150'
         # self.user = 'root'
-        # self.passwd = 'Tan520521'
-        # self.port = 3754
+        # self.passwd = '123456'
+        # self.port = 3306
+
+        self.dbname = 'SpiderDB'
+        self.host = '55936bea3d360.gz.cdb.myqcloud.com'
+        self.user = 'root'
+        self.passwd = 'Tan520521'
+        self.port = 3754
 
     def QueryData(self, quertysql, count):
         try:
