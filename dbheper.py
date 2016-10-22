@@ -9,17 +9,17 @@ class DBHelper:
     sys.setdefaultencoding('utf-8')
 
     def __init__(self):
-        # self.dbname = 'SpiderDB'
-        # self.host = '192.168.31.150'
-        # self.user = 'root'
-        # self.passwd = '123456'
-        # self.port = 3306
-
         self.dbname = 'SpiderDB'
-        self.host = '55936bea3d360.gz.cdb.myqcloud.com'
+        self.host = '192.168.31.184'
         self.user = 'root'
-        self.passwd = 'Tan520521'
-        self.port = 3754
+        self.passwd = '123456'
+        self.port = 3306
+
+        # self.dbname = 'SpiderDB'
+        # self.host = '55936bea3d360.gz.cdb.myqcloud.com'
+        # self.user = 'root'
+        # self.passwd = 'Tan520521'
+        # self.port = 3754
 
     def QueryData(self, quertysql, count):
         try:
@@ -44,6 +44,56 @@ class DBHelper:
             print "Number of rows insert: %d" % cur.rowcount
             cur.close()
             conn.commit()
+        except MySQLdb.Error, e:
+            print "Mysql Error %d: %s" % (e.args[0], e.args[1])
+        finally:
+            conn.close()
+
+    def InsertImageUrlInfo(self, imageTheme, imageUrl):
+
+        conn = MySQLdb.connect(host=self.host, user=self.user, passwd=self.passwd, db=self.dbname, port=self.port,
+                               charset="utf8")
+        try:
+            cur = conn.cursor()
+
+            cur.execute("insert into BeautyGirls(ImageTheme ,ImageUrl, IsDownload,IsDelete) value (%s,%s,0,0);",
+                        (str(imageTheme), str(imageUrl)))
+            print "Number of rows insert: %d" % cur.rowcount
+            cur.close()
+            conn.commit()
+        except MySQLdb.Error, e:
+            print "Mysql Error %d: %s" % (e.args[0], e.args[1])
+        finally:
+            conn.close()
+
+
+    def InserHouseDatainfo(self,developers,housewhere,area,other,type,price):
+        conn = MySQLdb.connect(host=self.host, user=self.user, passwd=self.passwd, db=self.dbname, port=self.port,
+                               charset="utf8")
+        try:
+            cur = conn.cursor()
+
+            cur.execute("insert into HouseData(EstateDevelopers,Wheredes,area,other,type,price,IsDelete)value(%s,%s,%s,%s,%s,%s,0);",
+                        (str(developers), str(housewhere),str(area),str(other),str(type),int(price)))
+            print "Number of rows insert: %d" % cur.rowcount
+            cur.close()
+            conn.commit()
+        except MySQLdb.Error, e:
+            print "Mysql Error %d: %s" % (e.args[0], e.args[1])
+        finally:
+            conn.close()
+    def GetImageUrlInfo(self, imageTheme, imageUrl):
+
+        conn = MySQLdb.connect(host=self.host, user=self.user, passwd=self.passwd, db=self.dbname, port=self.port,
+                               charset="utf8")
+        try:
+            cur = conn.cursor()
+            cur.execute(
+                "select ImageTheme ,ImageUrl,IsDownload,IsDelete from  BeautyGirls where ImageTheme=%s and ImageUrl = %s and IsDelete=0;",
+                (str(imageTheme), str(imageUrl)))
+            results = cur.fetchmany(1)
+            cur.close()
+            return results
         except MySQLdb.Error, e:
             print "Mysql Error %d: %s" % (e.args[0], e.args[1])
         finally:
