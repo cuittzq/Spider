@@ -10,7 +10,7 @@ class DBHelper:
 
     def __init__(self):
         self.dbname = 'SpiderDB'
-        self.host = '192.168.31.184'
+        self.host = '192.168.10.17'
         self.user = 'root'
         self.passwd = '123456'
         self.port = 3306
@@ -56,7 +56,7 @@ class DBHelper:
         try:
             cur = conn.cursor()
 
-            cur.execute("insert into BeautyGirls(ImageTheme ,ImageUrl, IsDownload,IsDelete) value (%s,%s,0,0);",
+            cur.execute("insert into beautygirls(imagetheme ,imageurl, download,deleted) value (%s,%s,0,0);",
                         (str(imageTheme), str(imageUrl)))
             print "Number of rows insert: %d" % cur.rowcount
             cur.close()
@@ -82,6 +82,7 @@ class DBHelper:
             print "Mysql Error %d: %s" % (e.args[0], e.args[1])
         finally:
             conn.close()
+
     def GetImageUrlInfo(self, imageTheme, imageUrl):
 
         conn = MySQLdb.connect(host=self.host, user=self.user, passwd=self.passwd, db=self.dbname, port=self.port,
@@ -89,7 +90,7 @@ class DBHelper:
         try:
             cur = conn.cursor()
             cur.execute(
-                "select ImageTheme ,ImageUrl,IsDownload,IsDelete from  BeautyGirls where ImageTheme=%s and ImageUrl = %s and IsDelete=0;",
+                "select imagetheme ,imageurl, download,deleted from  beautygirls where imagetheme=%s and imageurl = %s ;",
                 (str(imageTheme), str(imageUrl)))
             results = cur.fetchmany(1)
             cur.close()
