@@ -2,16 +2,13 @@
 __author__ = 'tzq'
 import os
 import time
-import urllib
-import urllib2
-import tool
 import sys
-import chardet
 import Queue
 import threading
+
+import tool
 from WebHelper import HttpHelper
 from dbheper import DBHelper
-from FileHelper import filehelper
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
