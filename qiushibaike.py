@@ -1,15 +1,16 @@
 # coding=utf-8
-__author__ = 'tzq'
-from dbheper import *
-import time
-import urllib2
-import tool
-import re
-
+from importlib import reload
 import sys
 
+__author__ = 'tzq'
+import time
+import urllib.request
+import re
+
+from dbheper import *
+import tool
+
 reload(sys)
-sys.setdefaultencoding('utf-8')
 
 
 # 糗事百科 http://www.qiushibaike.com/textnew/page/35
@@ -24,16 +25,17 @@ class Qiushibaike:
         headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.125 Safari/537.36',
         }
-        req = urllib2.Request(
+        req = urllib.request.Request(
             url=pageurl,
             headers=headers
         )
         try:
-            myResponse = urllib2.urlopen(req).read()
+            myResponse = urllib.request.urlopen(req).read()
             html = myResponse.decode('utf-8', 'ig').encode('utf-8')  ##先转换成unicode编码，然后转换系统编码输出
             return html
         except:
-            print "Unexpected error:", sys.exc_info()[2]
+            print
+            "Unexpected error:", sys.exc_info()[2]
             return None
 
     # 获取索引界面所有MM的信息，list格式
@@ -56,14 +58,14 @@ class Qiushibaike:
         for item in contents:
             # item[0]昵称,item[1]糗事,item[2]点赞数
 
-            print u"发现一位糗友,名字叫", item[0], u"他讲了一个笑话", item[1], u",收到了", item[2], u"个赞"
+            print(u"发现一位糗友,名字叫", item[0], u"他讲了一个笑话", item[1], u",收到了", item[2], u"个赞")
             dbheper = DBHelper()
             dbheper.InsertData(item[0].encode('utf-8').replace('\n', ''), item[1].encode('utf-8').replace('\n', ''),
                                item[2].encode('utf-8'))
 
     def savePagesInfos(self, start, end):
         for i in range(start, end + 1):
-            print u"正在收集第", i, u"页的糗事"
+            print(u"正在收集第", i, u"页的糗事")
             self.savePageInfo(i)
             time.sleep(1)
 

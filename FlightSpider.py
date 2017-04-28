@@ -1,3 +1,4 @@
+from imp import reload
 import random
 import threading
 
@@ -9,8 +10,6 @@ import datetime
 from WebHelper import HttpHelper
 
 reload(sys)
-sys.setdefaultencoding('utf-8')
-
 
 class FlightSpider(threading.Thread):
     def __init__(self, startindex):
@@ -157,7 +156,7 @@ class FlightSpider(threading.Thread):
             contenthtml = self.HttpHelper.getHtml(url)
             index = index + 1
             if (contenthtml != None):
-                print (str(index))
+                print(str(index))
 
 
 class TravelSpider(threading.Thread):
@@ -174,10 +173,10 @@ class TravelSpider(threading.Thread):
             contenthtml = self.HttpHelper.getHtml(url)
             index = index + 1
             if (contenthtml != None):
-                print (str(index))
+                print(str(index))
 
 
 if __name__ == '__main__':
-     for i in range(1, 60):
+    for i in range(1, 60):
         p = TravelSpider()
         p.start()

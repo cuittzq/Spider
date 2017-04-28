@@ -1,13 +1,13 @@
 # -*- coding: UTF-8 -*-
+from imp import reload
+import queue
+
 __author__ = 'tzq'
 import os
 import time
 import urllib
-import urllib2
 import tool
 import sys
-import chardet
-import Queue
 import threading
 from WebHelper import HttpHelper
 
@@ -104,13 +104,15 @@ class Meituiwang:
     def getPageImages(self, index):
         contents = []
         # 获取索引界面 套图地址
-        print u"正在收集第", index, u"页的MM信息"
+        print
+        u"正在收集第", index, u"页的MM信息"
         # contents = self.getContents(i)
         contents = self.getImageIndexsForSiwai(index)
-        print u"收集第", index, u"页的MM信息完成"
+        print(u"收集第", index, u"页的MM信息完成")
         if contents != None:
             # 循环套图地址
-            print u"开始循环下载", index, u"页的MM信息"
+            print(u"开始循环下载", index, u"页的MM信息")
+
             for item in contents:
                 name = item['Name']
                 url = item['Url']
@@ -124,11 +126,9 @@ class Meituiwang:
                 ishaved = False
                 if detailhtml != None:
                     # 分析套图数量
-                    print u"分析套图数量",
-                    print
+                    print(u"分析套图数量")
                     allnum = self.getAllnum(detailhtml)
-                    print u"套图数量", allnum,
-                    print
+                    print(u"套图数量", allnum, )
                     # baseurl = url[0:len(url) - 5]
                     baseurl = url[0:len(url) - 5]
                     # name = "D:/性感美女/" + name
@@ -147,8 +147,7 @@ class Meituiwang:
                         if (i > 1):
                             # url = baseurl + '_' + str(i) + ".html"
                             url = baseurl + str(i) + ".htm"
-                        print u"加入生产队列", url,
-                        print
+                        print(u"加入生产队列", url)
                         # self.ProductImage(url, name, i)
                         t1 = threading.Thread(target=self.ProductImage, args=(url, name, i))
                         threads.append(t1)
@@ -158,8 +157,7 @@ class Meituiwang:
                         t.start()
                     t.join()
 
-            print u"循环下载", index, u"页的MM信息完成"
-            print
+            print(u"循环下载", index, u"页的MM信息完成")
 
     # 下载图片
     def downloadImage(self, url, name, index):
@@ -174,7 +172,7 @@ class Meituiwang:
                         # 保存图片
                         self.saveImg(imagesurl, filename)
         except:
-            print "保存图片失败:", sys.exc_info()[2]
+            print("保存图片失败:", sys.exc_info()[2])
 
     # 传入图片地址，文件名，保存单张图片
     def saveImg(self, imageURL, fileName):
@@ -184,10 +182,10 @@ class Meituiwang:
             data = u.read()
             f = open(fileName, 'wb')
             f.write(data)
-            print fileName
+            print(fileName)
             f.close()
         except:
-            print "Unexpected error:", sys.exc_info()[2]
+            print("Unexpected error:", sys.exc_info()[2])
         finally:
             f.close()
 
@@ -208,7 +206,6 @@ class Meituiwang:
         else:
             # 如果目录存在则不创建，并提示目录已存在
             # print u"名为", path, '的文件夹已经创建'
-            print
             return False
 
     def savePagesInfos(self, start, end):
@@ -230,15 +227,12 @@ class Meituiwang:
                     if not os.path.exists(filename):
                         # 保存图片
                         if not q.full():
-                            print "图片加入下载队列:" + imagesurl + filename + "队列数：" + str(q.qsize())
+                            print("图片加入下载队列:" + imagesurl + filename + "队列数：" + str(q.qsize()))
                             q.put([imagesurl, filename])
-                            print
                         else:
-                            print "下载队列已经满了:" + imagesurl + filename + "队列数：" + str(q.qsize())
-                            print
+                            print("下载队列已经满了:" + imagesurl + filename + "队列数：" + str(q.qsize()))
         except:
-            print "图片---" + imagesurl + "加入下载队列失败:" + str(sys.exc_info())
-            print
+            print("图片---" + imagesurl + "加入下载队列失败:" + str(sys.exc_info()))
 
 
 class producer(threading.Thread):
@@ -253,7 +247,7 @@ class producer(threading.Thread):
         for i in range(1, self.index):
             try:
                 if q.qsize() > 100:
-                    print "队列已经满了:" + str(q.qsize()) + "休息10s"
+                    print("队列已经满了:" + str(q.qsize()) + "休息10s")
                     time.sleep(10)
                     pass
 
@@ -261,23 +255,23 @@ class producer(threading.Thread):
                 # print
                 self.meituiwang.getPageImages(i)
             except:
-                print "开始爬取图片失败:" + str(sys.exc_info())
-            print 'producer' + ' ----- Queue Size:' + str(q.qsize())
-            print
+                print("开始爬取图片失败:" + str(sys.exc_info()))
+
+            print('producer' + ' ----- Queue Size:' + str(q.qsize()))
 
 
-# 解析图片
-def getImage(self, pagehtml):
-    import lxml.html.soupparser as soupparser
-    dom = soupparser.fromstring(pagehtml)
-    # nodes = dom.xpath("//div[@class='content']/div[@class='content-pic']/a/img")
-    nodes = dom.xpath("//div[@class='mainer']/div[@class='picmainer']/div[@class='picsbox picsboxcenter']/p/img")
-    if (len(nodes) == 0):
-        nodes = dom.xpath("//div[@class='mainer']/div[@class='picmainer']/div[@class='picsbox picsboxcenter']/img")
-    imagesrc = nodes[0].xpath("@src")
-    if (len(imagesrc) == 0):
-        return None
-    return imagesrc[0]
+    # 解析图片
+    def getImage(self, pagehtml):
+        import lxml.html.soupparser as soupparser
+        dom = soupparser.fromstring(pagehtml)
+        # nodes = dom.xpath("//div[@class='content']/div[@class='content-pic']/a/img")
+        nodes = dom.xpath("//div[@class='mainer']/div[@class='picmainer']/div[@class='picsbox picsboxcenter']/p/img")
+        if (len(nodes) == 0):
+            nodes = dom.xpath("//div[@class='mainer']/div[@class='picmainer']/div[@class='picsbox picsboxcenter']/img")
+        imagesrc = nodes[0].xpath("@src")
+        if (len(imagesrc) == 0):
+            return None
+        return imagesrc[0]
 
 
 class consumer(threading.Thread):
@@ -291,16 +285,14 @@ class consumer(threading.Thread):
                 threading._sleep(5)
                 pass
             else:
-                print '开始下载'
-                print
+                print('开始下载')
                 inageObj = q.get()
-                print '正在下载', inageObj[1], inageObj[0] + str(q.qsize())
-                print
+                print('正在下载', inageObj[1], inageObj[0] + str(q.qsize()))
                 # print 'consumer' + ' ----- Queue Size:' + str(q.qsize())
                 # print
                 self.saveImg(inageObj[0], inageObj[1])
-                print inageObj[1], inageObj[0] + '下载完成'
-                print
+                print(inageObj[1], inageObj[0] + '下载完成')
+
     # 传入图片地址，文件名，保存单张图片
     def saveImg(self, imageURL, fileName):
         f = []
@@ -309,15 +301,17 @@ class consumer(threading.Thread):
             data = u.read()
             f = open(fileName, 'wb')
             f.write(data)
-            print fileName
+            print
+            fileName
             f.close()
         except:
-            print "Unexpected error:", sys.exc_info()[2]
+            print
+            "Unexpected error:", sys.exc_info()[2]
         finally:
             f.close()
 
 
-q = Queue.Queue()
+q = queue.Queue()
 q._init(500)
 if __name__ == '__main__':
     p = producer(59)

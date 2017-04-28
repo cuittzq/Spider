@@ -1,10 +1,9 @@
 # coding=utf-8
 __author__ = 'Administrator'
 import urllib
-import urllib2
-import httplib
+import urllib.request
 import json
-import re
+
 import tool
 
 
@@ -39,13 +38,12 @@ class Meinvboqing:
                        "User-Agent": "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36 SE 2.X MetaSr 1.0",
                        "Cookie": "uua=25329813-7dc2-4819-b7de-82f7885d8d4a; Hm_lvt_e0d6338cf40a95fc0aed6b37f32cf584=1445304521,1445321194; Hm_lpvt_e0d6338cf40a95fc0aed6b37f32cf584=1445321194"}
 
-
         params = urllib.urlencode({'param': json.dumps({'name': 'tzq123',
                                                         'pass': '123456'})})
-        print params
-        req = urllib2.Request('http://www.boqingguan.com/Ajax/Login', postdata)
+        print(params)
+        req = urllib.request.Request('http://www.boqingguan.com/Ajax/Login', postdata)
         req.headers = headersdata
-        resp = urllib2.urlopen(req).read()
+        resp = urllib.request.urlopen(req).read()
         print(resp)
 
 

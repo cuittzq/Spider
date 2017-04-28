@@ -3,15 +3,12 @@ __author__ = 'tzq'
 import os
 import time
 import sys
-import Queue
+import queue
 import threading
 
 import tool
 from WebHelper import HttpHelper
 from dbheper import DBHelper
-
-reload(sys)
-sys.setdefaultencoding('utf-8')
 
 
 class BaseSpider:
@@ -34,7 +31,7 @@ class BaseSpider:
                             # 保存图片
                             self.filehelper.saveImg(imagesurls[i], filename)
         except:
-            print "保存图片失败:", sys.exc_info()[2]
+            print("保存图片失败:", sys.exc_info()[2])
 
 
             # 获取套图张数并获取图片信息
@@ -43,12 +40,12 @@ class BaseSpider:
     def getPageImages(self, index):
         contents = []
         # 获取索引界面 套图地址
-        print u"正在收集第", index, u"页的MM信息"
+        print(u"正在收集第", index, u"页的MM信息")
         contents = self.getContents(index)
-        print u"收集第", index, u"页的MM信息完成"
+        print(u"收集第", index, u"页的MM信息完成")
         if contents != None:
             # 循环套图地址
-            print u"开始循环下载", index, u"页的MM信息"
+            print(u"开始循环下载", index, u"页的MM信息")
             for item in contents:
                 name = item['Name']
                 url = item['Url']
@@ -62,11 +59,9 @@ class BaseSpider:
                 ishaved = False
                 if detailhtml != None:
                     # 分析套图数量
-                    print u"分析套图数量",
-                    print
+                    print(u"分析套图数量", )
                     allnum = self.getAllnum(detailhtml)
-                    print u"套图数量", allnum,
-                    print
+                    print(u"套图数量", allnum)
                     baseurl = url[0:len(url) - 5]
                     threads = []
                     for i in range(1, allnum):
@@ -75,8 +70,7 @@ class BaseSpider:
                             url = 'http://www.yixiuba.com' + url
                         if (i > 1):
                             url = baseurl + '_' + str(i) + ".html"
-                        print u"加入生产队列", url,
-                        print
+                        print(u"加入生产队列", url)
                         t1 = threading.Thread(target=self.ProductImage, args=(url, name, i))
                         threads.append(t1)
 
@@ -85,8 +79,7 @@ class BaseSpider:
                         t.start()
                     t.join()
 
-            print u"循环下载", index, u"页的MM信息完成"
-            print
+            print(u"循环下载", index, u"页的MM信息完成")
 
     # 加入生产队列
     def ProductImage(self, url, name, index):
@@ -100,10 +93,9 @@ class BaseSpider:
                         dbmageInfo = self.DBHelper.GetImageUrlInfo(name, imagesurls[i]);
                         if dbmageInfo == None or len(dbmageInfo) == 0:
                             self.DBHelper.InsertImageUrlInfo(name, imagesurls[i])
-                            print "图片存入数据库! 当前队列数：" + str(q.qsize())
+                            print("图片存入数据库! 当前队列数：" + str(q.qsize()))
         except:
-            print "图片---" + imagesurls[i] + "加入下载队列失败:" + str(sys.exc_info())
-            print
+            print("图片---" + imagesurls[i] + "加入下载队列失败:" + str(sys.exc_info()))
 
             # 获取索引界面所有MM的信息，list格式
 
@@ -298,17 +290,14 @@ class producer(threading.Thread):
         for i in range(1, self.index):
             try:
                 if q.qsize() > 100:
-                    print "队列已经满了:" + str(q.qsize()) + "休息10s"
+                    print
+                    "队列已经满了:" + str(q.qsize()) + "休息10s"
                     time.sleep(10)
                     pass
-
-                # print "开始爬取图片信息:"
-                # print
                 self.meituiwang.getPageImages(i)
             except:
-                print "开始爬取图片失败:" + str(sys.exc_info())
-            print 'producer' + ' ----- Queue Size:' + str(q.qsize())
-            print
+                print("开始爬取图片失败:" + str(sys.exc_info()))
+            print('producer' + ' ----- Queue Size:' + str(q.qsize()))
 
     # 解析图片
     def getImage(self, pagehtml):
@@ -316,10 +305,10 @@ class producer(threading.Thread):
         dom = soupparser.fromstring(pagehtml)
         # nodes = dom.xpath("//div[@class='content']/div[@class='content-pic']/a/img")
         nodes = dom.xpath("//div[@class='mainer']/div[@class='picmainer']/div[@class='picsbox picsboxcenter']/p/img")
-        if (len(nodes) == 0):
+        if len(nodes) == 0:
             nodes = dom.xpath("//div[@class='mainer']/div[@class='picmainer']/div[@class='picsbox picsboxcenter']/img")
         imagesrc = nodes[0].xpath("@src")
-        if (len(imagesrc) == 0):
+        if len(imagesrc) == 0:
             return None
         return imagesrc[0]
 
@@ -335,19 +324,14 @@ class consumer(threading.Thread):
                 threading._sleep(5)
                 pass
             else:
-                print '开始下载'
-                print
+                print('开始下载')
                 inageObj = q.get()
-                print '正在下载', inageObj[1], inageObj[0] + str(q.qsize())
-                print
-                # print 'consumer' + ' ----- Queue Size:' + str(q.qsize())
-                # print
+                print('正在下载', inageObj[1], inageObj[0] + str(q.qsize()))
                 self.filehelper.saveImg(inageObj[0], inageObj[1])
-                print inageObj[1], inageObj[0] + '下载完成'
-                print
+                print(inageObj[1], inageObj[0] + '下载完成')
 
 
-q = Queue.Queue()
+q = queue.Queue()
 q._init(500)
 if __name__ == '__main__':
     p = producer(59)

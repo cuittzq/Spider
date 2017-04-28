@@ -7,7 +7,6 @@ __author__ = 'tzq139'
 
 
 class filehelper:
-
     # 创建新目录
     def __init__(self):
         pass
@@ -39,10 +38,9 @@ class filehelper:
             data = u.read()
             f = open(fileName, 'wb')
             f.write(data)
-            print fileName
+            print(fileName)
             f.close()
         except:
-            print "Unexpected error:", sys.exc_info()[2]
+            print("Unexpected error:", sys.exc_info()[2])
         finally:
             f.close()
-
