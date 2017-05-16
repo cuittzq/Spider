@@ -30,5 +30,5 @@ class HttpHelper:
             html = myResponse.decode(infoencode, 'ignore').encode('utf-8')  ##先转换成unicode编码，然后转换系统编码输出
             return html
         except:
-            print("Unexpected error:", sys.exc_info()[2])
+            print("Unexpected error:", sys.exc_info()[1])
             return None

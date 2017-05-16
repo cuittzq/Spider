@@ -21,10 +21,10 @@ class BaseSpider:
     def downloadImage(self, url, name, index):
         try:
             pagehtml = self.HttpHelper.getHtml(url)
-            if pagehtml != None:
+            if pagehtml is not None:
                 # 循环抓取套图图片
                 imagesurls = self.getImage(pagehtml)
-                if (imagesurls != None):
+                if imagesurls is not None:
                     for i in range(0, len(imagesurls)):
                         filename = name + "/beautiful" + str(index) + imagesurls[i][-4:]
                         if not os.path.exists(filename):
@@ -32,18 +32,15 @@ class BaseSpider:
                             self.filehelper.saveImg(imagesurls[i], filename)
         except:
             print("保存图片失败:", sys.exc_info()[2])
-
-
             # 获取套图张数并获取图片信息
 
     # 解析图片列表并循环解析图片地址
     def getPageImages(self, index):
-        contents = []
         # 获取索引界面 套图地址
         print(u"正在收集第", index, u"页的MM信息")
         contents = self.getContents(index)
         print(u"收集第", index, u"页的MM信息完成")
-        if contents != None:
+        if contents is not None:
             # 循环套图地址
             print(u"开始循环下载", index, u"页的MM信息")
             for item in contents:
@@ -55,8 +52,6 @@ class BaseSpider:
                 # 套图地址URL
                 # 得到套图界面代码
                 detailhtml = self.HttpHelper.getHtml(url)
-                allnum = 0
-                ishaved = False
                 if detailhtml != None:
                     # 分析套图数量
                     print(u"分析套图数量", )
@@ -64,11 +59,11 @@ class BaseSpider:
                     print(u"套图数量", allnum)
                     baseurl = url[0:len(url) - 5]
                     threads = []
-                    for i in range(1, allnum):
+                    for i in range(1, allnum+1):
                         url = baseurl
                         if "http" not in url:
                             url = 'http://www.yixiuba.com' + url
-                        if (i > 1):
+                        if i > 1:
                             url = baseurl + '_' + str(i) + ".html"
                         print(u"加入生产队列", url)
                         t1 = threading.Thread(target=self.ProductImage, args=(url, name, i))
@@ -88,15 +83,14 @@ class BaseSpider:
             if pagehtml != None:
                 # 循环抓取套图图片
                 imagesurls = self.getImage(pagehtml)
-                if (imagesurls != None and len(imagesurls) > 0):
+                if imagesurls is not None and len(imagesurls) > 0:
                     for i in range(0, len(imagesurls)):
-                        dbmageInfo = self.DBHelper.GetImageUrlInfo(name, imagesurls[i]);
-                        if dbmageInfo == None or len(dbmageInfo) == 0:
+                        dbmageInfo = self.DBHelper.GetImageUrlInfo(name, imagesurls[i])
+                        if dbmageInfo is None or len(dbmageInfo) == 0:
                             self.DBHelper.InsertImageUrlInfo(name, imagesurls[i])
                             print("图片存入数据库! 当前队列数：" + str(q.qsize()))
         except:
             print("图片---" + imagesurls[i] + "加入下载队列失败:" + str(sys.exc_info()))
-
             # 获取索引界面所有MM的信息，list格式
 
     # 解析网页套图信息
@@ -104,10 +98,10 @@ class BaseSpider:
         contents = []
         for baseUrl in self.siteURL:
             url = self.siteURL[baseUrl] % str(pageindex)
-            if (pageindex == 1):
+            if 1 == pageindex:
                 url = 'http://www.tu11.com/%s/' % str(baseUrl)
             contenthtml = self.HttpHelper.getHtml(url)
-            if contenthtml != None:
+            if contenthtml is not None:
                 import lxml.html.soupparser as soupparser
                 dom = soupparser.fromstring(contenthtml)
                 # doc = dom.parse(dom)/html/body/div/dl/dd
@@ -118,7 +112,7 @@ class BaseSpider:
                     # 套图名称： item.tesx
                     # 套图URL item.xpath("@href")[0]
                     # append 只能添加一个对象
-                    if (len(item.xpath("@href")) > 0):
+                    if len(item.xpath("@href")) > 0:
                         dict = {'Name': item.xpath("@title")[0], 'Url': item.xpath("@href")[0]}
                         contents.append(dict)
         return contents
@@ -147,17 +141,20 @@ class BaseSpider:
         # nodes = /html/body/div[3]/div[3]/p/img
         nodes = dom.xpath("//div[@class='center']/div[@class='page-list']/p/img")
         images = []
-        if (len(nodes) > 0):
+        if len(nodes) > 0:
             for i in range(0, len(nodes)):
                 images.append(nodes[i].xpath("@src")[0])
-        if (len(images) == 0):
+        if 0 == len(images):
             return None
         return images
 
 
 class MeituisiwatupianSpider(BaseSpider):
     def __init__(self):
-        self.siteURL = {'meituisiwatupian': 'http://www.tu11.com/meituisiwatupian/list_2_%s.html'}
+        self.siteURL = {'meituisiwatupian': 'http://www.tu11.com/meituisiwatupian/list_2_%s.html',
+                        'xingganmeinvxiezhen': 'http://www.tu11.com/xingganmeinvxiezhen/list_2_%s.html',
+                        'BEAUTYLEGtuimo': 'http://www.tu11.com/BEAUTYLEGtuimo/list_2_%s.html',
+                        'shenghuomeinvzipai': 'http://www.tu11.com/shenghuomeinvzipai/list_2_%s.html'}
         BaseSpider.__init__(self)
 
     # 获取索引界面所有MM的信息，list格式
@@ -165,10 +162,10 @@ class MeituisiwatupianSpider(BaseSpider):
         contents = []
         for baseUrl in self.siteURL:
             url = self.siteURL[baseUrl] % str(pageindex)
-            if (pageindex == 1):
+            if pageindex == 1:
                 url = 'http://www.tu11.com/%s/' % str(baseUrl)
             contenthtml = self.HttpHelper.getHtml(url)
-            if contenthtml != None:
+            if contenthtml is not None:
                 import lxml.html.soupparser as soupparser
                 dom = soupparser.fromstring(contenthtml)
                 # doc = dom.parse(dom)/html/body/div/dl/dd
@@ -179,7 +176,7 @@ class MeituisiwatupianSpider(BaseSpider):
                     # 套图名称： item.tesx
                     # 套图URL item.xpath("@href")[0]
                     # append 只能添加一个对象
-                    if (len(item.xpath("@href")) > 0):
+                    if len(item.xpath("@href")) > 0:
                         dict = {'Name': item.xpath("@title")[0], 'Url': item.xpath("@href")[0]}
                         contents.append(dict)
         return contents
@@ -208,10 +205,10 @@ class MeituisiwatupianSpider(BaseSpider):
         # nodes = /html/body/div[3]/div[3]/p/img
         nodes = dom.xpath("//div[@class='center']/div[@class='page-list']/p/img")
         images = []
-        if (len(nodes) > 0):
+        if len(nodes) > 0:
             for i in range(0, len(nodes)):
                 images.append(nodes[i].xpath("@src")[0])
-        if (len(images) == 0):
+        if len(images) == 0:
             return None
         return images
 
@@ -225,10 +222,10 @@ class MeinvtupianSpider(BaseSpider):
         contents = []
         for baseUrl in self.siteURL:
             url = self.siteURL[baseUrl] % str(pageindex)
-            if (pageindex == 1):
+            if 1 == pageindex:
                 url = 'http://www.tu11.com/%s/' % str(baseUrl)
             contenthtml = self.HttpHelper.getHtml(url)
-            if contenthtml != None:
+            if contenthtml is not None:
                 import lxml.html.soupparser as soupparser
                 dom = soupparser.fromstring(contenthtml)
                 # doc = dom.parse(dom)/html/body/div/dl/dd
@@ -239,13 +236,12 @@ class MeinvtupianSpider(BaseSpider):
                     # 套图名称： item.tesx
                     # 套图URL item.xpath("@href")[0]
                     # append 只能添加一个对象
-                    if (len(item.xpath("@href")) > 0):
+                    if len(item.xpath("@href")) > 0:
                         dict = {'Name': item.xpath("@title")[0], 'Url': item.xpath("@href")[0]}
                         contents.append(dict)
         return contents
 
-        # 分析套图数量
-
+    # 分析套图数量
     def getAllnum(self, pagehtml):
         # class="content">
         import lxml.html.soupparser as soupparser
@@ -270,10 +266,10 @@ class MeinvtupianSpider(BaseSpider):
         # nodes = /html/body/div[3]/div[3]/p/img
         nodes = dom.xpath("//div[@class='center']/div[@class='page-list']/p/img")
         images = []
-        if (len(nodes) > 0):
+        if len(nodes) > 0:
             for i in range(0, len(nodes)):
                 images.append(nodes[i].xpath("@src")[0])
-        if (len(images) == 0):
+        if 0 == len(images):
             return None
         return images
 
