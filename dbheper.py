@@ -8,7 +8,7 @@ class DBHelper:
 
     def __init__(self):
         self.dbname = 'SpiderDB'
-        self.host = '192.168.10.17'
+        self.host = '192.168.10.105'
         self.user = 'root'
         self.passwd = '123456'
         self.port = 3306

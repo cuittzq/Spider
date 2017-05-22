@@ -59,12 +59,14 @@ class BaseSpider:
                     print(u"套图数量", allnum)
                     baseurl = url[0:len(url) - 5]
                     threads = []
-                    for i in range(1, allnum+1):
+                    for i in range(1, allnum + 1):
                         url = baseurl
                         if "http" not in url:
                             url = 'http://www.yixiuba.com' + url
                         if i > 1:
                             url = baseurl + '_' + str(i) + ".html"
+                        else:
+                            url = baseurl + ".html"
                         print(u"加入生产队列", url)
                         t1 = threading.Thread(target=self.ProductImage, args=(url, name, i))
                         threads.append(t1)
