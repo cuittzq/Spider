@@ -2,9 +2,9 @@
 __author__ = 'tzq'
 import time
 
-import tool
-from dbheper import *
-from WebHelper import HttpHelper
+from basetools import tool
+from basetools.dbheper import *
+from basetools.WebHelper import HttpHelper
 
 class GetLianjiaData:
     def __init__(self):

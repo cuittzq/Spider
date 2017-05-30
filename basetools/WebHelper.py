@@ -1,9 +1,11 @@
 # coding=utf-8
 __author__ = 'tzq'
-import tool
 import sys
 import urllib.request
+
 import chardet
+
+from basetools import tool
 
 
 class HttpHelper:

@@ -7,8 +7,8 @@ import time
 import urllib.request
 import re
 
-from dbheper import *
-import tool
+from basetools.dbheper import *
+from basetools import tool
 
 reload(sys)
 

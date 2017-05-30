@@ -4,7 +4,7 @@ import urllib
 import urllib.request
 import json
 
-import tool
+from basetools import tool
 
 
 # 糗事百科 http://www.boqingguan.com/

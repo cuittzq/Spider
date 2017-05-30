@@ -6,10 +6,10 @@ __author__ = 'tzq'
 import os
 import time
 import urllib
-import tool
+from basetools import tool
 import sys
 import threading
-from WebHelper import HttpHelper
+from basetools.WebHelper import HttpHelper
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
