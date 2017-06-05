@@ -6,6 +6,7 @@ __author__ = 'tzq139'
 class MeinvtupianSpider(BaseSpider):
     def __init__(self):
         self.siteURL = {'meinvtupian': 'http://www.umei.cc/meinvtupian/siwameinv/%s.htm'}
+        BaseSpider.__init__(self)
 
     # 获取索引界面所有MM的信息，list格式
     def getContents(self, pageindex):

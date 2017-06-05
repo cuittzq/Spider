@@ -1,3 +1,5 @@
+import queue
+
 __author__ = 'tzq139'
 import re
 import os
@@ -14,6 +16,8 @@ class BaseSpider:
         self.tool = tool.Tool()
         self.HttpHelper = HttpHelper()
         self.DBHelper = DBHelper()
+        self.q = queue.Queue()
+        self.q._init(500)
 
     # 下载图片并保存本地
     def downloadImage(self, url, name, index):
@@ -95,19 +99,18 @@ class BaseSpider:
                         if match:
                             baseimage = match.pop(0)
                             baseimageurl = baseimage[0]
-                            break;
                         else:
                             dbmageInfo = self.DBHelper.GetImageUrlInfo(name, imagesurls[i])
                             if dbmageInfo is None or len(dbmageInfo) == 0:
                                 self.DBHelper.InsertImageUrlInfo(name, imagesurls[i])
-                                print("图片存入数据库! 当前队列数：" + str(q.qsize()))
+                                print("图片存入数据库! 当前队列数：" + str(self.q.qsize()))
 
                     if len(baseimageurl) > 1:
                         for index in range(1, maxnum):
                             dbmageInfo = self.DBHelper.GetImageUrlInfo(name, baseimageurl + str(index) + '.jpg')
                             if dbmageInfo is None or len(dbmageInfo) == 0:
                                 self.DBHelper.InsertImageUrlInfo(name, baseimageurl + str(index) + '.jpg')
-                                print("图片存入数据库! 当前队列数：" + str(q.qsize()))
+                                print("图片存入数据库! 当前队列数：" + str(self.q.qsize()))
 
 
 
@@ -169,5 +172,3 @@ class BaseSpider:
         if 0 == len(images):
             return None
         return images
-
-

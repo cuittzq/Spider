@@ -1,3 +1,5 @@
+import re
+import sys
 from BaseSpider import BaseSpider
 
 __author__ = 'tzq139'
@@ -64,3 +66,42 @@ class MeituisiwatupianSpider(BaseSpider):
         if len(images) == 0:
             return None
         return images
+
+        # 加入生产队列
+    def ProductImage(self, url, name, index):
+        try:
+            pagehtml = self.HttpHelper.getHtml(url)
+            if pagehtml != None:
+                # 循环抓取套图图片
+                imagesurls = self.getImage(pagehtml)
+
+                if imagesurls is not None and len(imagesurls) > 0:
+
+                    maxnum = 50
+                    baseimageurl = ''
+                    for i in range(0, len(imagesurls)):
+                        pattern = re.compile(r'(.*)(\d{2,3})\.jpg')
+                        # 使用Pattern匹配文本，获得匹配结果，无法匹配时将返回None
+                        match = pattern.findall(imagesurls[i])
+                        if match:
+                            baseimage = match.pop(0)
+                            baseimageurl = baseimage[0]
+                        else:
+                            dbmageInfo = self.DBHelper.GetImageUrlInfo(name, imagesurls[i])
+                            if dbmageInfo is None or len(dbmageInfo) == 0:
+                                self.DBHelper.InsertImageUrlInfo(name, imagesurls[i])
+                                print("图片存入数据库! 当前队列数：" + str(self.q.qsize()))
+
+                    if len(baseimageurl) > 1:
+                        for index in range(1, maxnum):
+                            dbmageInfo = self.DBHelper.GetImageUrlInfo(name, baseimageurl + str(index) + '.jpg')
+                            if dbmageInfo is None or len(dbmageInfo) == 0:
+                                self.DBHelper.InsertImageUrlInfo(name, baseimageurl + str(index) + '.jpg')
+                                print("图片存入数据库! 当前队列数：" + str(self.q.qsize()))
+
+
+
+        except:
+            print("图片---" + imagesurls[i] + "加入下载队列失败:" + str(sys.exc_info()))
+            # 获取索引界面所有MM的信息，list格式
+

@@ -42,25 +42,6 @@ class producer(threading.Thread):
             return None
         return imagesrc[0]
 
-
-class consumer(threading.Thread):
-    def __init__(self, index):
-        threading.Thread.__init__(self, name="consumer Thread-%d" % index)
-
-    def run(self):
-        global q
-        while True:
-            if q.qsize() < 1:
-                threading._sleep(5)
-                pass
-            else:
-                print('开始下载')
-                inageObj = q.get()
-                print('正在下载', inageObj[1], inageObj[0] + str(q.qsize()))
-                self.filehelper.saveImg(inageObj[0], inageObj[1])
-                print(inageObj[1], inageObj[0] + '下载完成')
-
-
 q = queue.Queue()
 q._init(500)
 
