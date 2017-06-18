@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/meituiwangForyixiuba.py" />
-    <bookmark url="file://$PROJECT_DIR$/GetLianjiaData.py" line="33" />
+    <bookmark url="file://$PROJECT_DIR$/Producer.py" />
+    <bookmark url="file://$PROJECT_DIR$/GetLianjiaData.py" line="32" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="79182c4d-36ad-4f85-a267-b434fc383860" name="Default" comment="">
-      <change type="DELETED" beforePath="E:\PythonObj\Spider\Meinvboqingguan.py" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BaseSpider.py" afterPath="$PROJECT_DIR$/BaseSpider.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MeinvtupianSpider.py" afterPath="$PROJECT_DIR$/MeinvtupianSpider.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MeituisiwatupianSpider.py" afterPath="$PROJECT_DIR$/MeituisiwatupianSpider.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/meituiwangForyixiuba.py" afterPath="$PROJECT_DIR$/meituiwangForyixiuba.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spiders/Tu11Spider.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spiders/__init__.py" />
+      <change type="DELETED" beforePath="E:\PythonObj\Spider\MeituisiwatupianSpider.py" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GetLianjiaData.py" afterPath="$PROJECT_DIR$/GetLianjiaData.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="E:\PythonObj\Spider\BaseSpider.py" afterPath="$PROJECT_DIR$/spiders/BaseSpider.py" />
+      <change type="MOVED" beforePath="E:\PythonObj\Spider\FlightSpider.py" afterPath="$PROJECT_DIR$/spiders/FlightSpider.py" />
+      <change type="MOVED" beforePath="E:\PythonObj\Spider\MeinvtupianSpider.py" afterPath="$PROJECT_DIR$/spiders/umeiccSpider.py" />
+      <change type="MOVED" beforePath="E:\PythonObj\Spider\meituiwang.py" afterPath="$PROJECT_DIR$/spiders/mm131Spider.py" />
+      <change type="MOVED" beforePath="E:\PythonObj\Spider\meituiwangForyixiuba.py" afterPath="$PROJECT_DIR$/Producer.py" />
+      <change type="MOVED" beforePath="E:\PythonObj\Spider\qiushibaike.py" afterPath="$PROJECT_DIR$/spiders/qiushibaikeSpider.py" />
     </list>
     <ignored path="Spider.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,9 +30,9 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/NewSpider$Spider.coverage" NAME="Spider Coverage Results" MODIFIED="1474702348128" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/NewSpider$Spider.coverage" NAME="Spider Coverage Results" MODIFIED="1497753554480" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/NewSpider$DBHeper.coverage" NAME="DBHeper Coverage Results" MODIFIED="1448439573320" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/NewSpider$GetLianjiaData.coverage" NAME="GetLianjiaData Coverage Results" MODIFIED="1496674536545" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/NewSpider$GetLianjiaData.coverage" NAME="GetLianjiaData Coverage Results" MODIFIED="1497753300574" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -44,78 +49,95 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="meituiwangForyixiuba.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/meituiwangForyixiuba.py">
+      <file leaf-file-name="Producer.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Producer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="14" column="35" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MeinvtupianSpider.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MeinvtupianSpider.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+            <state vertical-scroll-proportion="-11.0">
+              <caret line="21" column="40" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
               <folding>
-                <element signature="e#318#1351#0" expanded="false" />
-                <element signature="e#1409#1901#0" expanded="false" />
-                <element signature="e#1945#2385#0" expanded="false" />
+                <element signature="e#24#65#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_pydev_execfile.py" pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
+      <file leaf-file-name="umeiccSpider.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spiders/umeiccSpider.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="-7.3333335">
+              <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
+              <folding>
+                <element signature="e#1514#1905#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="BaseSpider.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/BaseSpider.py">
+        <entry file="file://$PROJECT_DIR$/spiders/BaseSpider.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="82" column="0" selection-start-line="82" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
+              <caret line="89" column="3" selection-start-line="89" selection-start-column="3" selection-end-line="89" selection-end-column="3" />
               <folding>
-                <element signature="e#473#1095#0" expanded="false" />
-                <element signature="e#4615#5648#0" expanded="false" />
-                <element signature="e#5706#6182#0" expanded="false" />
-                <element signature="e#6237#6677#0" expanded="false" />
+                <element signature="e#22#31#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MeituisiwatupianSpider.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/MeituisiwatupianSpider.py">
+      <file leaf-file-name="dbheper.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/basetools/dbheper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.43307087">
-              <caret line="72" column="51" selection-start-line="72" selection-start-column="51" selection-end-line="72" selection-end-column="51" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="85" column="50" selection-start-line="85" selection-start-column="42" selection-end-line="85" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="qiushibaikeSpider.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spiders/qiushibaikeSpider.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding>
-                <element signature="e#0#9#0" expanded="true" />
+                <element signature="e#15#43#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="meituiwang.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/meituiwang.py">
+      <file leaf-file-name="Tu11Spider.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/spiders/Tu11Spider.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="1.3638393">
+              <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+              <folding>
+                <element signature="e#1819#2228#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mm131Spider.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spiders/mm131Spider.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="217" column="8" selection-start-line="217" selection-start-column="8" selection-end-line="217" selection-end-column="8" />
+              <caret line="241" column="37" selection-start-line="241" selection-start-column="37" selection-end-line="241" selection-end-column="37" />
               <folding>
                 <element signature="e#24#46#0" expanded="true" />
-                <element signature="e#8738#8859#0" expanded="false" />
-                <element signature="e#8888#9418#0" expanded="false" />
-                <element signature="e#9467#10035#0" expanded="false" />
+                <element signature="e#8890#9420#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spiders/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -124,27 +146,20 @@
         <entry file="file://$PROJECT_DIR$/GetLianjiaData.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-              <folding />
+              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+              <folding>
+                <element signature="e#423#3377#0" expanded="false" />
+                <element signature="e#3427#4189#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="FlightSpider.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FlightSpider.py">
+        <entry file="file://$PROJECT_DIR$/spiders/FlightSpider.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/basetools/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -178,7 +193,6 @@
         <option value="$PROJECT_DIR$/lagouspider.py" />
         <option value="$PROJECT_DIR$/FileHelper.py" />
         <option value="$PROJECT_DIR$/FlightSpider.py" />
-        <option value="$PROJECT_DIR$/GetLianjiaData.py" />
         <option value="$PROJECT_DIR$/meituiwang.py" />
         <option value="$PROJECT_DIR$/Spider.py" />
         <option value="$PROJECT_DIR$/qiushibaike.py" />
@@ -186,9 +200,19 @@
         <option value="$PROJECT_DIR$/WebHelper.py" />
         <option value="$PROJECT_DIR$/dbheper.py" />
         <option value="$PROJECT_DIR$/MeinvtupianSpider.py" />
-        <option value="$PROJECT_DIR$/meituiwangForyixiuba.py" />
-        <option value="$PROJECT_DIR$/BaseSpider.py" />
         <option value="$PROJECT_DIR$/MeituisiwatupianSpider.py" />
+        <option value="$PROJECT_DIR$/BaseSpider.py" />
+        <option value="$PROJECT_DIR$/Tu11Spide.py" />
+        <option value="$PROJECT_DIR$/Tu11Spider.py" />
+        <option value="$PROJECT_DIR$/meituiwangForyixiuba.py" />
+        <option value="$PROJECT_DIR$/mm131Spider.py" />
+        <option value="$PROJECT_DIR$/umeiccSpider.py" />
+        <option value="$PROJECT_DIR$/qiushibaikeSpider.py" />
+        <option value="$PROJECT_DIR$/spiders/Tu11Spider.py" />
+        <option value="$PROJECT_DIR$/GetLianjiaData.py" />
+        <option value="$PROJECT_DIR$/Producer.py" />
+        <option value="$PROJECT_DIR$/spiders/BaseSpider.py" />
+        <option value="$PROJECT_DIR$/spiders/umeiccSpider.py" />
       </list>
     </option>
   </component>
@@ -247,8 +271,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -277,12 +299,14 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="basetools" />
+              <option name="myItemId" value="spiders" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -293,7 +317,7 @@
     <property name="recentsLimit" value="5" />
     <property name="js.buildTools.grunt.node_interpreter" value="" />
     <property name="js.buildTools.grunt.grunt-cli.package" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/meituiwangForyixiuba.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/GetLianjiaData.py" />
     <property name="restartRequiresConfirmation" value="true" />
   </component>
   <component name="RecentsManager">
@@ -301,11 +325,12 @@
       <recent name="E:\PythonObj\Spider" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\PythonObj\Spider\spiders" />
       <recent name="E:\PythonObj\Spider\basetools" />
       <recent name="H:\MyProjects\Spider" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.GetLianjiaData">
+  <component name="RunManager" selected="Python.Spider">
     <configuration default="false" name="GetLianjiaData" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -319,7 +344,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Spider" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/meituiwangForyixiuba.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/GetLianjiaData.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -582,14 +607,14 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="D:\Python27\python.exe" />
+      <option name="SDK_HOME" value="D:\Program Files\Python\Python36\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Spider" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/meituiwangForyixiuba.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Producer.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -760,7 +785,13 @@
       <option name="project" value="LOCAL" />
       <updated>1496118537539</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="调整结构">
+      <created>1496674579172</created>
+      <option name="number" value="00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1496674579172</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TodoView">
@@ -774,20 +805,20 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1932" height="1056" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17681624" sideWeight="0.24249166" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.120192304" sideWeight="0.24249166" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32703003" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.77530587" sideWeight="0.50427806" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5197861" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3259177" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3170189" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36" sideWeight="0.49572194" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3582251" sideWeight="0.49572194" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32683983" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14491978" sideWeight="0.75750834" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.41883117" sideWeight="0.49583334" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4512987" sideWeight="0.49583334" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -828,74 +859,64 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/meituiwang.py</url>
+          <url>file://$PROJECT_DIR$/spiders/mm131Spider.py</url>
           <line>187</line>
           <option name="timeStamp" value="157" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/meituiwang.py</url>
+          <url>file://$PROJECT_DIR$/spiders/mm131Spider.py</url>
           <line>174</line>
           <option name="timeStamp" value="171" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/meituiwang.py</url>
+          <url>file://$PROJECT_DIR$/spiders/mm131Spider.py</url>
           <line>96</line>
           <option name="timeStamp" value="180" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/meituiwang.py</url>
+          <url>file://$PROJECT_DIR$/spiders/mm131Spider.py</url>
           <line>295</line>
           <option name="timeStamp" value="186" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/meituiwang.py</url>
+          <url>file://$PROJECT_DIR$/spiders/mm131Spider.py</url>
           <line>301</line>
           <option name="timeStamp" value="203" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/meituiwang.py</url>
+          <url>file://$PROJECT_DIR$/spiders/mm131Spider.py</url>
           <line>310</line>
           <option name="timeStamp" value="204" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/meituiwang.py</url>
+          <url>file://$PROJECT_DIR$/spiders/mm131Spider.py</url>
           <line>312</line>
           <option name="timeStamp" value="206" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/meituiwang.py</url>
+          <url>file://$PROJECT_DIR$/spiders/mm131Spider.py</url>
           <line>159</line>
           <option name="timeStamp" value="209" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/meituiwang.py</url>
+          <url>file://$PROJECT_DIR$/spiders/mm131Spider.py</url>
           <line>256</line>
           <option name="timeStamp" value="212" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/meituiwang.py</url>
+          <url>file://$PROJECT_DIR$/spiders/mm131Spider.py</url>
           <line>255</line>
           <option name="timeStamp" value="215" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/meituiwang.py</url>
+          <url>file://$PROJECT_DIR$/spiders/mm131Spider.py</url>
           <line>150</line>
           <option name="timeStamp" value="216" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/meituiwang.py</url>
+          <url>file://$PROJECT_DIR$/spiders/mm131Spider.py</url>
           <line>289</line>
           <option name="timeStamp" value="217" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/GetLianjiaData.py</url>
-          <line>51</line>
-          <option name="timeStamp" value="270" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/GetLianjiaData.py</url>
-          <line>32</line>
-          <option name="timeStamp" value="272" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/basetools/FileHelper.py</url>
@@ -903,13 +924,8 @@
           <option name="timeStamp" value="285" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/meituiwangForyixiuba.py</url>
+          <url>file://$PROJECT_DIR$/Producer.py</url>
           <option name="timeStamp" value="289" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/meituiwangForyixiuba.py</url>
-          <line>28</line>
-          <option name="timeStamp" value="314" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/basetools/dbheper.py</url>
@@ -927,9 +943,39 @@
           <option name="timeStamp" value="331" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/meituiwang.py</url>
+          <url>file://$PROJECT_DIR$/spiders/mm131Spider.py</url>
           <line>276</line>
           <option name="timeStamp" value="376" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/Producer.py</url>
+          <line>28</line>
+          <option name="timeStamp" value="385" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/Producer.py</url>
+          <line>30</line>
+          <option name="timeStamp" value="386" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/spiders/BaseSpider.py</url>
+          <line>115</line>
+          <option name="timeStamp" value="393" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/spiders/umeiccSpider.py</url>
+          <line>31</line>
+          <option name="timeStamp" value="395" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/spiders/BaseSpider.py</url>
+          <line>90</line>
+          <option name="timeStamp" value="400" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/spiders/umeiccSpider.py</url>
+          <line>12</line>
+          <option name="timeStamp" value="403" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -942,7 +988,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="384" />
+      <option name="time" value="404" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -957,38 +1003,13 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/BaseSpider.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="82" column="0" selection-start-line="82" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
-          <folding>
-            <element signature="e#473#1095#0" expanded="false" />
-            <element signature="e#4615#5648#0" expanded="false" />
-            <element signature="e#5706#6182#0" expanded="false" />
-            <element signature="e#6237#6677#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MeituisiwatupianSpider.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/meituiwang.py">
+    <entry file="file://$PROJECT_DIR$/spiders/mm131Spider.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="217" column="8" selection-start-line="217" selection-start-column="8" selection-end-line="217" selection-end-column="8" />
           <folding>
             <element signature="e#24#46#0" expanded="true" />
-            <element signature="e#8738#8859#0" expanded="false" />
-            <element signature="e#8888#9418#0" expanded="false" />
-            <element signature="e#9467#10035#0" expanded="false" />
+            <element signature="e#8890#9420#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -997,11 +1018,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#423#3377#0" expanded="false" />
+            <element signature="e#3427#4189#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FlightSpider.py">
+    <entry file="file://$PROJECT_DIR$/spiders/FlightSpider.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
@@ -1025,15 +1049,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/meituiwang.py">
+    <entry file="file://$PROJECT_DIR$/spiders/mm131Spider.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="263" column="33" selection-start-line="263" selection-start-column="33" selection-end-line="263" selection-end-column="33" />
           <folding>
             <element signature="e#24#46#0" expanded="true" />
-            <element signature="e#8738#8859#0" expanded="false" />
-            <element signature="e#8888#9418#0" expanded="false" />
-            <element signature="e#9467#10035#0" expanded="false" />
+            <element signature="e#8890#9420#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1061,22 +1083,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FlightSpider.py">
+    <entry file="file://$PROJECT_DIR$/spiders/FlightSpider.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="8" column="15" selection-start-line="8" selection-start-column="15" selection-end-line="8" selection-end-column="15" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/meituiwang.py">
+    <entry file="file://$PROJECT_DIR$/spiders/mm131Spider.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#24#46#0" expanded="true" />
-            <element signature="e#8738#8859#0" expanded="false" />
-            <element signature="e#8888#9418#0" expanded="false" />
-            <element signature="e#9467#10035#0" expanded="false" />
+            <element signature="e#8890#9420#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1088,7 +1108,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/qiushibaike.py">
+    <entry file="file://$PROJECT_DIR$/spiders/qiushibaikeSpider.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="42" column="21" selection-start-line="42" selection-start-column="21" selection-end-line="42" selection-end-column="21" />
@@ -1116,7 +1136,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/qiushibaike.py">
+    <entry file="file://$PROJECT_DIR$/spiders/qiushibaikeSpider.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1137,7 +1157,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/qiushibaike.py">
+    <entry file="file://$PROJECT_DIR$/spiders/qiushibaikeSpider.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
@@ -1158,7 +1178,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/qiushibaike.py">
+    <entry file="file://$PROJECT_DIR$/spiders/qiushibaikeSpider.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="14" column="17" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="17" />
@@ -1179,7 +1199,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/qiushibaike.py">
+    <entry file="file://$PROJECT_DIR$/spiders/qiushibaikeSpider.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="14" column="17" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="17" />
@@ -1256,26 +1276,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/basetools/dbheper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/basetools/FileHelper.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/qiushibaike.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1295,35 +1300,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GetLianjiaData.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FlightSpider.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/meituiwang.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="217" column="8" selection-start-line="217" selection-start-column="8" selection-end-line="217" selection-end-column="8" />
-          <folding>
-            <element signature="e#24#46#0" expanded="true" />
-            <element signature="e#8738#8859#0" expanded="false" />
-            <element signature="e#8888#9418#0" expanded="false" />
-            <element signature="e#9467#10035#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/Program Files/Python/Python36/Lib/threading.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1331,45 +1307,106 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MeinvtupianSpider.py">
+    <entry file="file://$PROJECT_DIR$/spiders/FlightSpider.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding>
-            <element signature="e#318#1351#0" expanded="false" />
-            <element signature="e#1409#1901#0" expanded="false" />
-            <element signature="e#1945#2385#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BaseSpider.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="82" column="0" selection-start-line="82" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
-          <folding>
-            <element signature="e#473#1095#0" expanded="false" />
-            <element signature="e#4615#5648#0" expanded="false" />
-            <element signature="e#5706#6182#0" expanded="false" />
-            <element signature="e#6237#6677#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/meituiwangForyixiuba.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="35" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MeituisiwatupianSpider.py">
+    <entry file="file://D:/Program Files/Python/Python36/Lib/site-packages/threadpool.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.43307087">
-          <caret line="72" column="51" selection-start-line="72" selection-start-column="51" selection-end-line="72" selection-end-column="51" />
+        <state vertical-scroll-proportion="0.8849372">
+          <caret line="157" column="0" selection-start-line="157" selection-start-column="0" selection-end-line="157" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/basetools/dbheper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="85" column="50" selection-start-line="85" selection-start-column="42" selection-end-line="85" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spiders/qiushibaikeSpider.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#15#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spiders/mm131Spider.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="241" column="37" selection-start-line="241" selection-start-column="37" selection-end-line="241" selection-end-column="37" />
+          <folding>
+            <element signature="e#24#46#0" expanded="true" />
+            <element signature="e#8890#9420#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spiders/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GetLianjiaData.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding>
+            <element signature="e#423#3377#0" expanded="false" />
+            <element signature="e#3427#4189#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Producer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.0">
+          <caret line="21" column="40" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
+          <folding>
+            <element signature="e#24#65#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spiders/BaseSpider.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="89" column="3" selection-start-line="89" selection-start-column="3" selection-end-line="89" selection-end-column="3" />
+          <folding>
+            <element signature="e#22#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spiders/umeiccSpider.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.3333335">
+          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
+          <folding>
+            <element signature="e#1514#1905#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spiders/Tu11Spider.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.3638393">
+          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding>
+            <element signature="e#1819#2228#0" expanded="false" />
           </folding>
         </state>
       </provider>

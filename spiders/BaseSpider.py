@@ -1,10 +1,8 @@
-import queue
-
 __author__ = 'tzq139'
 import re
-import os
 import sys
-import threading
+
+import threadpool
 
 from basetools import tool
 from basetools.WebHelper import HttpHelper
@@ -16,25 +14,7 @@ class BaseSpider:
         self.tool = tool.Tool()
         self.HttpHelper = HttpHelper()
         self.DBHelper = DBHelper()
-        self.q = queue.Queue()
-        self.q._init(500)
-
-    # 下载图片并保存本地
-    def downloadImage(self, url, name, index):
-        try:
-            pagehtml = self.HttpHelper.getHtml(url)
-            if pagehtml is not None:
-                # 循环抓取套图图片
-                imagesurls = self.getImage(pagehtml)
-                if imagesurls is not None:
-                    for i in range(0, len(imagesurls)):
-                        filename = name + "/beautiful" + str(index) + imagesurls[i][-4:]
-                        if not os.path.exists(filename):
-                            # 保存图片
-                            self.filehelper.saveImg(imagesurls[i], filename)
-        except:
-            print("保存图片失败:", sys.exc_info()[2])
-            # 获取套图张数并获取图片信息
+        self.pool = threadpool.ThreadPool(100)
 
     # 解析图片列表并循环解析图片地址
     def getPageImages(self, index):
@@ -49,47 +29,35 @@ class BaseSpider:
                 name = item['Name']
                 url = item['Url']
                 if "http" not in url:
-                    url = 'http://www.yixiuba.com' + url
-                # print u"发现套图", name, u"套图地址是", url,
-                # 套图地址URL
-                # 得到套图界面代码
+                    return
                 detailhtml = self.HttpHelper.getHtml(url)
                 if detailhtml != None:
                     # 分析套图数量
-                    print(u"分析套图数量", )
                     allnum = self.getAllnum(detailhtml)
                     print(u"套图数量", allnum)
                     baseurl = url[0:len(url) - 5]
-                    threads = []
+                    func_varList = []
                     for i in range(1, allnum + 1):
-                        url = baseurl
-                        if "http" not in url:
-                            url = 'http://www.yixiuba.com' + url
                         if i > 1:
                             url = baseurl + '_' + str(i) + ".html"
                         else:
                             url = baseurl + ".html"
                         print(u"加入生产队列", url)
-                        t1 = threading.Thread(target=self.ProductImage, args=(url, name, i))
-                        threads.append(t1)
-
-                    for t in threads:
-                        t.setDaemon(True)
-                        t.start()
-                    t.join()
-
+                        func_varList.append((None, {'url': url, 'name': name}))
+                    requests = threadpool.makeRequests(self.ProductImage, func_varList)
+                    [self.pool.putRequest(req) for req in requests]
+                    self.pool.wait()
             print(u"循环下载", index, u"页的MM信息完成")
 
     # 加入生产队列
-    def ProductImage(self, url, name, index):
+    def ProductImage(self, url, name):
         try:
             pagehtml = self.HttpHelper.getHtml(url)
             if pagehtml != None:
                 # 循环抓取套图图片
+                print("开始循环抓取套图图片" + url)
                 imagesurls = self.getImage(pagehtml)
-
                 if imagesurls is not None and len(imagesurls) > 0:
-
                     maxnum = 50
                     baseimageurl = ''
                     for i in range(0, len(imagesurls)):
@@ -99,21 +67,21 @@ class BaseSpider:
                         if match:
                             baseimage = match.pop(0)
                             baseimageurl = baseimage[0]
+                            break;
                         else:
                             dbmageInfo = self.DBHelper.GetImageUrlInfo(name, imagesurls[i])
                             if dbmageInfo is None or len(dbmageInfo) == 0:
                                 self.DBHelper.InsertImageUrlInfo(name, imagesurls[i])
-                                print("图片存入数据库! 当前队列数：" + str(self.q.qsize()))
-
+                                print("图片存入数据库成功!")
                     if len(baseimageurl) > 1:
+                        print("baseimageurl：" + str(baseimageurl))
+                        print("maxnum：" + str(maxnum))
                         for index in range(1, maxnum):
                             dbmageInfo = self.DBHelper.GetImageUrlInfo(name, baseimageurl + str(index) + '.jpg')
                             if dbmageInfo is None or len(dbmageInfo) == 0:
                                 self.DBHelper.InsertImageUrlInfo(name, baseimageurl + str(index) + '.jpg')
-                                print("图片存入数据库! 当前队列数：" + str(self.q.qsize()))
-
-
-
+                                print("图片存入数据库成功!")
+                print("循环抓取套图图片结束" + url)
         except:
             print("图片---" + imagesurls[i] + "加入下载队列失败:" + str(sys.exc_info()))
             # 获取索引界面所有MM的信息，list格式

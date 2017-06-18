@@ -14,7 +14,7 @@ reload(sys)
 
 
 # 糗事百科 http://www.qiushibaike.com/textnew/page/35
-class Qiushibaike:
+class qiushibaikeSpider:
     # 页面初始化
     def __init__(self):
         self.siteURL = 'http://www.qiushibaike.com/textnew/page/'
@@ -71,5 +71,5 @@ class Qiushibaike:
 
 
 # 传入起止页码即可，在此传入了2,10,表示抓取第2到10页的MM
-qiushibaike = Qiushibaike()
+qiushibaike = qiushibaikeSpider()
 qiushibaike.savePagesInfos(1, 35)

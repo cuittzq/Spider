@@ -12,7 +12,6 @@ class GetLianjiaData:
         self.tool = tool.Tool()
         self.HttpHelper = HttpHelper()
         self.DBHelper = DBHelper()
-        # 获取索引界面所有MM的信息，list格式
 
     def getContents(self, pageindex):
         contents = []
@@ -74,9 +73,6 @@ class GetLianjiaData:
                     print
                     "Unexpected error:", sys.exc_info()[2]
         return contents
-
-
-        # 将一页淘宝MM的信息保存起来
 
     def saveHouseInfo(self, pageIndex):
         # 获取第一页楼盘列表

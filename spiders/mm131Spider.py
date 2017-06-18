@@ -15,7 +15,7 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
-class Meituiwang:
+class mm131Spider:
     def __init__(self):
         self.siteURL = {'qingchun': 'http://www.mm131.com/qingchun/list_1_%s.html',
                         'xinggan': 'http://www.mm131.com/xinggan/list_6_%s.html'}
@@ -239,7 +239,7 @@ class producer(threading.Thread):
     def __init__(self, index):
         threading.Thread.__init__(self, name="producer Thread")
         self.index = index
-        self.meituiwang = Meituiwang()
+        self.meituiwang = mm131Spider()
 
     def run(self):
         global q
